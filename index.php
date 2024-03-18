@@ -41,14 +41,20 @@ $hotels = [
 ];
 // variablies
 $parking = isset ($_GET["parking"]);
+$varVote = isset ($_GET["varVote"]) ? $_GET["varVote"] : 0;
 // functions
-
+// filter by parking availability
 if ($parking) {
     $hotels = array_filter($hotels, function ($hotel) {
         return $hotel["parking"] == true;
     });
 }
-
+// filter by vote number
+if ($varVote > 0) {
+    $hotels = array_filter($hotels, function ($hotel) use ($varVote) {
+        return $hotel["vote"] >= $varVote;
+    });
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,16 +86,38 @@ if ($parking) {
 <body data-bs-theme="dark">
     <div class="container mt-5 px-5">
         <form method="GET">
-            <div class="mb-3 form-check">
+            <div class="p-0 gap-3 mb-3 form-check d-flex justify-content-center flex-column align-content-center">
 
-                <input type="checkbox" value="1" class="form-check-input" id="parking" name="parking" <?php
-                if ($parking)
-                    echo "checked";
-                ?>>
+                <div class="d-flex px-4 gap-2">
+                    <input type="checkbox" value="1" class="form-check-input" id="parking" name="parking" <?php
+                    if ($parking)
+                        echo "checked";
+                    ?>>
 
-                <label class="form-check-label text-capitalize" for="parking">parking</label>
+                    <label class="form-check-label text-capitalize" for="parking">parking</label>
+                </div>
+
+
+
+                <!-- <div class="input-group mb-3">
+                    <label class="input-group-text" for="vote">Stars</label>
+                    <select class="form-select" id="vote" name="vote">
+                        <option type="number" id="varVote" name="varVote" value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                    </select>
+                </div> -->
+                <div class="form-group d-flex gap-2">
+                    <label for="varVote">Stars</label>
+                    <input type="number" id="varVote" name="varVote" value="<?php echo $varVote; ?>">
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <table class="table table-hover border">
             <thead>
