@@ -75,11 +75,12 @@
        <div> <?php echo $currentHotel ["name"]  ?> </div>
        <div> <?php echo $currentHotel ["description"]  ?> </div>
        <div> <?php echo $currentHotel ["parking"] ?> </div>
+       <div> <?php echo $currentHotel ["vote"]  ?> </div>
       
     
        
        
-    <?php }  var_dump($hotels); ?>
+    <?php }  print_r($hotels); ?>
   
 
 
