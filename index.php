@@ -73,11 +73,13 @@
     <?php foreach ($hotels as $currentHotel)  { ?>
 
        <div> <?php echo $currentHotel ["name"]  ?> </div>
-         <div> <?php echo $currentHotel ["description"]  ?> </div>
+       <div> <?php echo $currentHotel ["description"]  ?> </div>
+       <div> <?php echo $currentHotel ["parking"] ?> </div>
+      
     
        
-        
-    <?php } ?>
+       
+    <?php }  var_dump($hotels); ?>
   
 
 
