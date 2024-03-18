@@ -39,6 +39,15 @@ $hotels = [
     ],
 
 ];
+// variablies
+$parking = isset ($_GET["parking"]);
+// functions
+
+if ($parking) {
+    $hotels = array_filter($hotels, function ($hotel) {
+        return $hotel["parking"] == true;
+    });
+}
 
 ?>
 <!DOCTYPE html>
@@ -70,7 +79,19 @@ $hotels = [
 
 <body data-bs-theme="dark">
     <div class="container mt-5 px-5">
-        <table class="table border table-striped">
+        <form method="GET">
+            <div class="mb-3 form-check">
+
+                <input type="checkbox" value="1" class="form-check-input" id="parking" name="parking" <?php
+                if ($parking)
+                    echo "checked";
+                ?>>
+
+                <label class="form-check-label text-capitalize" for="parking">parking</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <table class="table table-hover border">
             <thead>
                 <tr>
                     <th scope="col">#</th>
