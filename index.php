@@ -1,44 +1,44 @@
 <?php
 
-    $hotels = [
+$hotels = [
 
-        [
-            'name' => 'Hotel Belvedere',
-            'description' => 'Hotel Belvedere Descrizione',
-            'parking' => true,
-            'vote' => 4,
-            'distance_to_center' => 10.4
-        ],
-        [
-            'name' => 'Hotel Futuro',
-            'description' => 'Hotel Futuro Descrizione',
-            'parking' => true,
-            'vote' => 2,
-            'distance_to_center' => 2
-        ],
-        [
-            'name' => 'Hotel Rivamare',
-            'description' => 'Hotel Rivamare Descrizione',
-            'parking' => false,
-            'vote' => 1,
-            'distance_to_center' => 1
-        ],
-        [
-            'name' => 'Hotel Bellavista',
-            'description' => 'Hotel Bellavista Descrizione',
-            'parking' => false,
-            'vote' => 5,
-            'distance_to_center' => 5.5
-        ],
-        [
-            'name' => 'Hotel Milano',
-            'description' => 'Hotel Milano Descrizione',
-            'parking' => true,
-            'vote' => 2,
-            'distance_to_center' => 50
-        ],
+    [
+        'name' => 'Hotel Belvedere',
+        'description' => 'Hotel Belvedere Descrizione',
+        'parking' => true,
+        'vote' => 4,
+        'distance_to_center' => 10.4
+    ],
+    [
+        'name' => 'Hotel Futuro',
+        'description' => 'Hotel Futuro Descrizione',
+        'parking' => true,
+        'vote' => 2,
+        'distance_to_center' => 2
+    ],
+    [
+        'name' => 'Hotel Rivamare',
+        'description' => 'Hotel Rivamare Descrizione',
+        'parking' => false,
+        'vote' => 1,
+        'distance_to_center' => 1
+    ],
+    [
+        'name' => 'Hotel Bellavista',
+        'description' => 'Hotel Bellavista Descrizione',
+        'parking' => false,
+        'vote' => 5,
+        'distance_to_center' => 5.5
+    ],
+    [
+        'name' => 'Hotel Milano',
+        'description' => 'Hotel Milano Descrizione',
+        'parking' => true,
+        'vote' => 2,
+        'distance_to_center' => 50
+    ],
 
-    ];
+];
 
 ?>
 <!DOCTYPE html>
@@ -69,23 +69,54 @@
 
 
 <body data-bs-theme="dark">
+    <div class="container mt-5 px-5">
+        <table class="table border table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">hotel</th>
+                    <th scope="col">description</th>
+                    <th scope="col">parking</th>
+                    <th scope="col">vote</th>
+                    <th scope="col">distance to center</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $key => $currentHotel) { ?>
+                    <tr>
+                        <td>
+                            <?php echo $key ?>
+                        </td>
+                        <td>
+                            <?php echo $currentHotel["name"] ?>
+                        </td>
+                        <td>
+                            <?php echo $currentHotel["description"] ?>
+                        </td>
+                        <td>
+                            <?php echo $currentHotel["parking"] ? "yes" : "nope" ?>
+                        </td>
+                        <td>
+                            <?php echo $currentHotel["vote"] ?>
+                        </td>
+                        <td>
+                            <?php echo $currentHotel["distance_to_center"] ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 
-    <?php foreach ($hotels as $currentHotel)  { ?>
-
-       <div> <?php echo $currentHotel ["name"]  ?> </div>
-       <div> <?php echo $currentHotel ["description"]  ?> </div>
-       <div> <?php echo $currentHotel ["parking"] ?> </div>
-       <div> <?php echo $currentHotel ["vote"]  ?> </div>
-      
-    
-       
-       
-    <?php }  print_r($hotels); ?>
-  
 
 
-    
-    
+
+
+
+
+
+
+
 
 
 
